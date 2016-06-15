@@ -1,0 +1,448 @@
+/*
+--------------------------------
+      Main markup
+1. Header
+2. Services
+3. Portfolio
+4. Default section
+5. Twitter
+6. Social
+7. Testimonials
+8. Contact
+9. Footer
+10. Responsive extention
+--------------------------------
+*/
+
+body {
+  font-size: @font-size-base;
+}
+
+
+// 1. Header
+.navigation {
+  position: relative;
+  .bg-img('bg-nav.jpg', @color-bg);
+
+  .nav-header{
+    z-index: 2;
+  }
+
+  .moto{
+    z-index: 1;
+  }
+}
+
+.nav-header{
+  padding: 60px 0;
+  background: @color-nav;
+  background: fadeout( @color-nav, 15%);
+
+  .nav-brand {
+    margin-top: 10px;
+  }
+
+  .nav-menu {
+    .nav-menu();
+    float: right;
+  }
+
+  .icon-navicon{
+    display: none;
+    float: right;
+    margin: 7px 30px;
+    cursor: pointer;
+    .transition();
+    &:hover{
+      color: @color-theme;
+    }
+  }
+
+}
+
+.moto {
+  margin: 250px 0;
+  font: 100 3em/1.75 @font-family-base;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  span {
+    padding: 0 20px;
+    background: @color-nav;
+    opacity: .85;
+  }
+
+}
+
+// 2. Services
+.stn-services {
+  &:extend(.stn-padding);
+  background-color: @color-theme;
+
+
+  h3 {
+    margin: 15px 0 20px;
+    font: 600 1.71em @font-family-base;
+    .text-uppercase();
+    color: @color-text-1;
+  }
+
+  p {
+    font: 600 .85em @font-family-base;
+    color: @color-text-1;
+  }
+
+  [class^='col-']{
+    @media (max-width: 992px) {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+//3. Portfolio
+.stn-portfolio {
+  position: relative;
+
+  .navigation-port{
+    z-index: 2;
+  }
+
+  .img-portfolio{
+    z-index: 1;
+  }
+}
+
+.stn-portfolio{
+  &:extend(.stn-padding);
+
+  .stn-heading-2{
+    margin-bottom: 80px;
+  }
+
+  .nav-menu{
+    .nav-menu(@color-text-2);
+    float: right;
+  }
+
+  [class^='col-']{
+    margin-bottom: 30px;
+    @media (min-width: 768px) and (max-width: 992px){
+      margin-bottom: 105px;
+    }
+  }
+
+  img{
+    margin: 0 auto;
+    opacity: .80;
+  }
+
+  .icon-navicon{
+    display: none;
+    float: right;
+    margin: 7px 30px;
+    color: @color-text-2;
+    cursor: pointer;
+    .transition();
+    &:hover{
+      color: @color-theme;
+    }
+  }
+}
+
+.img-portfolio{
+
+  a{
+    position: relative;
+    display: block;
+    .text-center;
+    &:after{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      max-width: 270px;
+      content:'+';
+      font: 100 72px @font-family-base;
+      line-height: 1;
+      color: @color-text-1;
+      background-color: @color-theme;
+      opacity: 0;
+      .transition();
+    }
+    &:hover:after{
+      opacity: .9;
+      line-height: 270/78;
+    }
+  }
+
+  a:link{
+    text-decoration: none;
+  }
+}
+
+//4. Default section
+.stn-default{
+  &:extend(.stn-padding);
+  background-color: @color-bg;
+
+  p{
+    margin-bottom: 30px;
+    font: 1em/1.55 @font-family-base;
+    color: @color-text-1;
+  }
+
+  img{
+    margin-top: 7px;
+  }
+
+  a{
+    display: inline-block;
+    padding: 15px 40px;
+    font: bold 1em/1 @font-family-base;
+    .text-uppercase();
+    text-decoration: none;
+    color: #353f46;
+    border: 2px solid #353f46;
+    .transition();
+    &:hover{
+      color: #fff;
+      border-color: #fff;
+    }
+  }
+}
+
+// 5. Twitter
+.stn-twitter{
+  &:extend(.stn-padding);
+  background-color: @color-theme;
+
+  p{
+    font: 100 1.95em/1.57 @font-family-base;
+    color: @color-text-1;
+    em{
+      font-weight: 600;
+      font-style: normal;
+    }
+  }
+  .icon-twitter{
+    margin-top: 5px;
+  }
+}
+
+// 6. Social
+.stn-social{
+  &:extend(.stn-padding);
+  .bg-img('bg-jhon.jpg', @color-bg);
+
+  p{
+    margin:0 0 30px;
+    font: 1em/1.75 @font-family-base;
+    color: @color-text-1;
+    a{
+      display: inline-block;
+      margin: 0 20px 30px 0;
+      padding: 15px 0;
+      width: 65px;
+      height: 65px;
+      text-decoration: none;
+      .text-center();
+      border: 2px solid @color-text-1;
+      .transition();
+      span {.transition();}
+      &:hover{
+        border-color: @color-theme;
+        span {
+          color: @color-theme;
+        }
+      }
+    }
+  }
+}
+
+// 7. Testimonials
+.stn-testimonials{
+  &:extend(.stn-padding);
+  background-color: @color-text-1;
+
+  p{
+    margin: 0 0 30px;
+    font: 100 1.95em/1.57 @font-family-base;
+    color: @color-text-2;
+    em{
+      font-weight: 600;
+      font-style: normal;
+    }
+  }
+  cite {
+    padding-left: 30px;
+    font: bold 1em @font-family-base;
+    color: @color-theme;
+  }
+  .icon-quote-right{
+    color: @color-text-2;
+    margin-top: 5px;
+  }
+}
+
+// 8. Contact
+.stn-contact{
+  &:extend(.stn-padding);
+  .bg-img('bg-contact.jpg');
+  font: 1em @font-family-base;
+
+  label,
+  p {
+    color: @color-text-1;
+  }
+
+  label {
+    .text-uppercase();
+    font-weight: bold;
+  }
+
+  p{
+    margin-bottom: 35px;
+    font-weight: 600;
+    line-height: 1.75;
+  }
+
+  input[type="text"],
+  textarea{
+    display: block;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.5em;
+    color: @color-text-1;
+    background-color: transparent;
+    border: 2px solid @color-text-1;
+  }
+
+  input[type="text"],
+  textarea{
+    .transition;
+    &:hover,
+    &:focus{
+      color: @color-theme;
+      border-color: @color-theme;
+    }
+  }
+
+
+  input[type="text"]{
+    margin-bottom: 35px;
+    height: 60px;
+  }
+
+  textarea{
+    margin-bottom: 40px;
+    height: 220px;
+  }
+
+  button{
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font: bold 1em @font-family-base;
+    color: @color-text-1;
+    background-color: @color-theme;
+    border: 0;
+    .text-uppercase;
+    .text-center;
+    .transition;
+
+    &:hover {
+      background-color: darken(@color-theme, 20%);
+    }
+  }
+}
+
+// 9. Footer
+
+footer{
+  &:extend(.stn-padding);
+  background-color: @color-nav;
+
+  .nav-menu{
+    //float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      a {
+        padding: 0 15px;
+        font: 600 .85em @font-family-base;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: @color-bg;
+        border-left: 2px solid @color-bg;
+        .transition();
+
+        &:hover {
+          color: @color-theme;
+        }
+      }
+      &:first-child a{
+        padding-left: 0;
+        border-left: 0;
+      }
+    }
+  }
+  .copyright {
+    .text-right;
+    font: 600 .85em @font-family-base;
+    color: @color-bg;
+  }
+}
+
+// 10. Responsive extention
+
+@media (max-width: 992px){
+  .moto{
+    margin: 175px 0;
+    font-size: 2em;
+    line-height: 1.75;
+  }
+  .stn-default{
+
+    a {
+      margin-bottom: 30px;
+    }
+  }
+  .stn-social{
+    .links{
+      .text-center;
+    }
+  }
+
+}
+@media (max-width: 768px){
+  .stn-services{
+    .text-center;
+    h2{
+      .text-left;
+    }
+    p {
+      padding: 0 50px;
+    }
+  }
+
+  footer{
+    .nav-menu{
+      .text-center;
+      li a{
+        padding: 0 5px;
+      }
+    }
+    .copyright{
+      margin-top: 10px;
+      .text-center;
+    }
+  }
+
+}
