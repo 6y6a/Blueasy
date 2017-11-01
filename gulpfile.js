@@ -23,6 +23,7 @@ var size           = require('gulp-size');
 var cssfont64      = require('gulp-cssfont64');
 var gulpSequence   = require('gulp-sequence');
 var ghPages        = require('gulp-gh-pages');
+var merge          = require('merge-stream');
 
 
 // Запуск `NODE_ENV=production npm start [задача]` приведет к сборке без sourcemaps
@@ -208,7 +209,7 @@ gulp.task('clean', function () {
 
 
 // Сборка всего
-gulp.task('build', gulpSequence('clean', ['make:scss', 'copy:css', 'img', 'js', 'html', 'font']));
+gulp.task('build', gulpSequence('clean', ['make:scss', 'copy:css', 'img', 'js', 'font', 'html']));
 
 
 // Локальный сервер, слежение
