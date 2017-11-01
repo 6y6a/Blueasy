@@ -62,7 +62,7 @@ footer {
 @font-face {
   font-family: 'icons';
   src: url('../font/icons/icomoon.eot');
-  src: url('../font/icons/icomoon.eot?#iefix') format('embedded-opentype'), url('../font/icons/icomoon.woff') format('woff'), url('../font/icons/icomoon.ttf') format('truetype'), url('../font/icons/icomoon.svg#FontName') format('svg');
+  src: url('../font/icons/icomoon.eot?#iefix') format('embedded-opentype'), url('../font/icomoon.woff') format('woff'), url('../font/icons/icomoon.ttf') format('truetype'), url('../font/icons/icomoon.svg#FontName') format('svg');
   font-style: normal;
   font-weight: normal;
 }

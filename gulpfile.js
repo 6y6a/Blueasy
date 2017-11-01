@@ -185,7 +185,7 @@ gulp.task('font:woff2', function () {
 
 // Сборка шрифтов
 gulp.task('font', function () {
-    return gulp.src('./src/font/*.css')
+    return gulp.src('./src/font/**.*')
       .pipe(gulp.dest('./build/css/'))
       .pipe(browserSync.stream());
 });
