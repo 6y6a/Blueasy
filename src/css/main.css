@@ -87,7 +87,7 @@ body {
 .navigation {
   position: relative;
   background: #515f68;
-  background: url('../img/bg-nav.jpg') center bottom no-repeat;
+  background: url('../blocks/header/img/bg-nav.jpg') center bottom no-repeat;
   background-size: cover;
 }
 .navigation .nav-header {

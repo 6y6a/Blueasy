@@ -1,0 +1,66 @@
+@import '../../scss/basic/variables';
+
+
+.header {
+  background: url('../img/bg-nav.jpg') 0 0 no-repeat;
+  background-size: cover;
+  
+  &__navigation {
+    padding: 60px 0;
+    background: fade-out($background-color, .15);
+  }
+
+  &__wrapper {
+    @include make-fluid-container();
+    @include make-container();
+
+    &--row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__menu {
+    margin: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-left: 15px;
+    padding: 10px 18px;
+    font: 600 14px/1 $font-family;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: 0.3s;
+
+    &--active {
+      border: 2px solid $acent-color;
+      color: $acent-color;
+    }
+
+    &:hover {
+      color: $acent-color;
+    }
+  }
+
+  &__hero {
+    display: inline-block;
+    margin: 250px 0;
+    font: 300 42px $font-family;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  &__moto {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 0 20px;
+    background: fade-out($background-color, 0.15);
+  }
+}

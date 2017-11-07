@@ -19,8 +19,9 @@ $theme-colors:(
         danger: $red,
 );
 
-$primary-color: #2196F3;
-$menu-color: #424242;
+
+$background-color: #515f67;
+$acent-color: #4bcaff;
 
 
 /* GRIDS
@@ -49,3 +50,6 @@ $grid-gutter-width: 30px;
 
 $link-color:            map_get($theme-colors, 'primary') !default;
 $link-hover-color:      darken($link-color, 15%) !default;
+
+
+$font-family: 'Segoe UI', sans-serif;
