@@ -6,8 +6,10 @@
 @import './src/scss/basic/grid.scss';
 
 // БЭМ блоки
-@import './src/blocks/sprite-png/sprite-png.scss';@import './src/blocks/icons/icons.scss';
+@import './src/blocks/sprite-png/sprite-png.scss';
+@import './src/blocks/icons/icons.scss';
 @import './src/blocks/header/header.scss';
 @import './src/blocks/services/services.scss';
 @import './src/blocks/portfolio/portfolio.scss';
 @import './src/blocks/video/video.scss';
+@import './src/blocks/twitter/twitter.scss';
