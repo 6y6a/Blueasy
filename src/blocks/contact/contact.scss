@@ -1,0 +1,131 @@
+@import '../../scss/basic/variables';
+
+
+.contact {
+  padding: 75px 0;
+  background: url(../img/bg-contact.jpg) 0 0 no-repeat;
+  background-size: cover;
+  color: #fff;
+
+  &__wrapper {
+    @include make-fluid-container();
+    @include make-container();
+  }
+
+  &__row {
+    @include make-row();
+  }
+
+  &__col-1 {
+    @include make-col-ready();
+    @include make-col(6);
+    @include make-col-offset(1);
+    order: 1;
+  }
+
+  &__col-2 {
+    @include make-col-ready();
+    @include make-col(5);
+  }
+
+  &__col-3 {
+    @include make-col-ready();
+    @include make-col(4);
+  }
+
+  &__heading {
+    margin: 0 auto 40px;
+    font: 300 30px/1 $font-family;
+    text-transform: uppercase;
+
+    &:after {
+      margin-top: 10px;
+      display: block;
+      content: '';
+      width: 45px;
+      height: 2px;
+      background: #fff;
+    }
+  }
+
+  &__label {
+    display: block;
+    text-transform: uppercase;
+    font: 600 14px $font-family
+  }
+
+  &__name {
+    display: block;
+    margin: 5px 0 35px;
+    padding: 15px 10px;
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    outline: none;
+    transition: .3s;
+
+    &:hover,
+    &:focus {
+      border-color: $acent-color
+    }
+  }
+
+  &__email {
+    display: block;
+    margin: 5px 0 35px;
+    padding: 15px 10px;
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    outline: none;
+    transition: .3s;
+
+    &:hover,
+    &:focus {
+      border-color: $acent-color
+    }
+  }
+
+  &__message {
+    display: block;
+    margin: 5px 0 40px;
+    padding: 15px 10px;
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    outline: none;
+    transition: .3s;
+
+    &:hover,
+    &:focus {
+      border-color: $acent-color
+    }
+  }
+
+  &__info {
+    margin: 20px 0 30px;
+    font: 500 14px $font-family;
+  }
+
+  &__btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font: 600 14px $font-family;
+    color: #fff;
+    background: $acent-color;
+    border: 0;
+    text-transform: uppercase;
+    text-align: center;
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($acent-color, 10%);
+    }
+
+  }
+}

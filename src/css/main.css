@@ -361,7 +361,7 @@ body {
 }
 .stn-contact {
   background: #fff;
-  background: url('../img/bg-contact.jpg') center bottom no-repeat;
+  background: url('../blocks/contact/img/bg-contact.jpg') center bottom no-repeat;
   background-size: cover;
   font: 1em 'SegoeUI', sans-serif;
 }
