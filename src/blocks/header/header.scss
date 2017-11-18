@@ -13,6 +13,7 @@
   &__wrapper {
     @include make-fluid-container();
     @include make-container();
+    text-align: center;
 
     &--row {
       display: flex;
