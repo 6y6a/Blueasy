@@ -1,0 +1,44 @@
+@import '../../scss/basic/variables';
+
+.footer {
+  padding: 75px 0;
+  background: #353f47;
+  color: $background-color;
+
+  &__wrapper {
+    @include make-fluid-container();
+    @include make-container();
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 0 15px;
+    font: 600 12px $font-family;
+    color: $background-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-left: 2px solid $background-color;
+    transition: .3s;
+
+    &--first {
+      border-left: none;
+    }
+
+    &:hover {
+      color: $acent-color;
+    }
+  }
+
+  &__copyright {
+    font: 600 12px $font-family;
+  }
+}
