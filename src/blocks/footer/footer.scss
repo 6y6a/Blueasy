@@ -1,15 +1,25 @@
 @import '../../scss/basic/variables';
 
 .footer {
-  padding: 75px 0;
+  padding: 25px 0;
   background: #353f47;
   color: $background-color;
+
+  @include media-breakpoint-up(md) {
+    padding: 75px 0;
+  }
 
   &__wrapper {
     @include make-fluid-container();
     @include make-container();
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
   }
 
   &__list {
@@ -17,6 +27,11 @@
     padding: 0;
     list-style: none;
     display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
   }
 
   &__link {
@@ -26,8 +41,11 @@
     color: $background-color;
     text-transform: uppercase;
     text-decoration: none;
-    border-left: 2px solid $background-color;
     transition: .3s;
+
+    @include media-breakpoint-up(md) {
+      border-left: 2px solid $background-color;
+    }
 
     &--first {
       border-left: none;
