@@ -17,7 +17,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  font-size: 30px;
+  font-size: 20px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 30px;
+  }
   color: #fff;
 }
 

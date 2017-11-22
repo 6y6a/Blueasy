@@ -12,6 +12,11 @@
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding: 0 10px;
+
+  @include media-breakpoint-up(md) {
+    padding: 0;
+  }
 }
 
 @mixin make-container($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
