@@ -2,9 +2,13 @@
 
 
 .twitter {
-  padding: 75px 0;
+  padding: 45px 0;
   background: $acent-color;
   color: #fff;
+
+  @include media-breakpoint-up(md) {
+    padding: 75px 0;
+  }
   
   &__wrapper {
     @include make-fluid-container();
@@ -17,12 +21,20 @@
 
   &__col-1 {
     @include make-col-ready();
-    @include make-col(11);
+
+    @include media-breakpoint-up(md) {
+      @include make-col(11);
+    }
   }
 
   &__col-2 {
     @include make-col-ready();
-    @include make-col(1);
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      @include make-col(1);
+      display: block;
+    }
   }
 
   &__heading {
