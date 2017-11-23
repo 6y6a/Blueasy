@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blueasy</title>
+
+  <!--Загрузка шрифта-->
+  <script>
+    // Этот скрипт должен быть размещён в <head> над всеми внешними объявлениями стилей (link[rel=stylesheet])
+    function loadFont(fontName, woffUrl, woff2Url) {
+      // 0. Многие неподдерживаемые браузеры должны останавливать работу тут.
+      var nua = navigator.userAgent;
+      var noSupport = !window.addEventListener // IE8 и ниже
+              || (nua.match(/(Android (2|3|4.0|4.1|4.2|4.3))|(Opera (Mini|Mobi))/) && !nua.match(/Chrome/)) // Android Stock Browser до 4.4 и Opera Mini
+
+      if (noSupport) {
+        return;
+      }
+
+      // 1. Настраиваем localStorage
+      var loSto = {};
+      try {
+        // Устанавливаем вспомогательную переменную для помощи с localStorage,
+        // например, для случаев когда cookies отключены и браузер не даёт к ним доступа.
+        // Иначе могут быть получены исключения, которые полностью остановят загрузку шрифтов.
+        loSto = localStorage || {};
+      } catch (ex) {
+      }
+
+      var localStoragePrefix = 'x-font-' + fontName;
+      var localStorageUrlKey = localStoragePrefix + 'url';
+      var localStorageCssKey = localStoragePrefix + 'css';
+      var storedFontUrl = loSto[localStorageUrlKey];
+      var storedFontCss = loSto[localStorageCssKey];
+
+      // 2. Создаём элемент <style>, который мы используем для вставки шрифта, закодированного в base64.
+      var styleElement = document.createElement('style');
+      styleElement.rel = 'stylesheet';
+      document.head.appendChild(styleElement);
+      // Из-за ошибок IE9 установка styleElement.textContent должна быть после этой строки.
+
+      // 3. Проверяем, находится ли шрифт уже в localStorage и последней ли он версии.
+      if (storedFontCss && (storedFontUrl === woffUrl || storedFontUrl === woff2Url)) {
+        // css до сих пор в localStorage
+        // и были загружены из одного из текущих адресов
+
+        // 4. Применяем стили шрифта.
+        styleElement.textContent = storedFontCss;
+      } else {
+        // Данных нет, или они загружены с устаревшего URL,
+        // поэтому мы должны загрузить их снова.
+
+        // 5. Проверяем поддержку WOFF2 чтобы узнать, какой URL использовать.
+        var url = (woff2Url && supportsWoff2())
+                ? woff2Url // WOFF2 URL передан в функцию и поддерживается.
+                : woffUrl; // Поддерживается только WOFF.
+
+        // 6. Получаем данные с сервера.
+        var request = new XMLHttpRequest();
+        request.open('GET', url);
+        request.onload = function () {
+          if (request.status >= 200 && request.status < 400) {
+            // 7. Обновляем localStorage новыми данными и применяем стили шрифта.
+            loSto[localStorageUrlKey] = url;
+            loSto[localStorageCssKey] = styleElement.textContent = request.responseText;
+          }
+        };
+        request.send();
+      }
+
+      function supportsWoff2() {
+        // Источник: https://github.com/filamentgroup/woff2-feature-test
+        if (!window.FontFace) {
+          return false;
+        }
+
+        var f = new FontFace('t', 'url("data:application/font-woff2,") format("woff2")', {});
+        f.load();
+
+        return f.status === 'loading';
+      }
+    }
+
+    loadFont('SegoeUI', 'css/segoe.css');
+  </script>
+  <link href="css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/icons.css">
+
+</head>
+<body>
+
+<header class="header">
+  <nav class="header__navigation">
+    <div class="header__wrapper  header__wrapper--row">
+      <img src="img/brand.png" alt="logo" class="header__logo">
+      <span class="header__toggle">&#9776</span>
+      <ul class="header__menu">
+        <li class="header__menu-item"><a href="#" class="header__link  header__link--active">Home</a></li>
+        <li class="header__menu-item"><a href="#" class="header__link">Services</a></li>
+        <li class="header__menu-item"><a href="#" class="header__link">Features</a></li>
+        <li class="header__menu-item"><a href="#" class="header__link">Portfolio</a></li>
+        <li class="header__menu-item"><a href="#" class="header__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="header__heading">
+    <div class="header__wrapper">
+      <h1 class="header__hero">
+        <span class="header__moto">“I’m looking for the unexpected.</span><br>
+        <span class="header__moto">I’m looking for things I’ve never seen before.’’</span>
+      </h1>
+    </div>
+  </div>
+</header>
+
+<section class="services">
+  <div class="services__wrapper">
+    <h2 class="services__heading">Services</h2>
+
+    <div class="services__row">
+      <div class="services__col">
+        <div class="services__icon  sprite-png--coffee"></div>
+        <p class="services__name">Coffee</p>
+
+        <p class="services__desc">Apple pie icing sweet. Brownie jelly-o applicake applicake sweet roll liquorice bear
+          claw. Jujubes carrot cake cotton candy sweet tart brownie. Tiramisu applicake jujubes.</p>
+      </div>
+      <div class="services__col">
+        <div class="services__icon  sprite-png--instant"></div>
+        <p class="services__name">Instant</p>
+
+        <p class="services__desc">Apple pie icing sweet. Brownie jelly-o applicake applicake sweet roll liquorice bear
+          claw. Jujubes carrot cake cotton candy sweet tart brownie. Tiramisu applicake jujubes.</p>
+      </div>
+      <div class="services__col">
+        <div class="services__icon  sprite-png--dslr"></div>
+        <p class="services__name">Serious</p>
+
+        <p class="services__desc">Apple pie icing sweet. Brownie jelly-o applicake applicake sweet roll liquorice bear
+          claw. Jujubes carrot cake cotton candy sweet tart brownie. Tiramisu applicake jujubes.</p>
+      </div>
+      <div class="services__col">
+        <div class="services__icon  sprite-png--frame"></div>
+        <p class="services__name">Frame</p>
+
+        <p class="services__desc">Apple pie icing sweet. Brownie jelly-o applicake applicake sweet roll liquorice bear
+          claw. Jujubes carrot cake cotton candy sweet tart brownie. Tiramisu applicake jujubes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio">
+  <div class="portfolio__wrapper  portfolio__wrapper--row">
+    <h2 class="portfolio__heading">Portfolio</h2>
+    <ul class="portfolio__menu">
+      <li class="portfolio__menu-item"><a href="#" class="portfolio__link  portfolio__link--active">All</a></li>
+      <li class="portfolio__menu-item"><a href="#" class="portfolio__link">Panoramas</a></li>
+      <li class="portfolio__menu-item"><a href="#" class="portfolio__link">Portraits</a></li>
+      <li class="portfolio__menu-item"><a href="#" class="portfolio__link">Macro</a></li>
+      <li class="portfolio__menu-item"><a href="#" class="portfolio__link">Journal</a></li>
+    </ul>
+  </div>
+
+  <div class="portfolio__wrapper">
+    <ul class="portfolio__list">
+      <li class="portfolio__content">
+        <div class="portfolio__row">
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo1.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo2.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo3.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo4.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo5.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo6.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo7.jpg" alt=""></a>
+          </div>
+          <div class="portfolio__col">
+            <a href="#" class="portfolio__nav"><img class="portfolio__img" src="./img/portfolio-photo8.jpg" alt=""></a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+</section>
+
+<section class="video">
+  <div class="video__wrapper">
+    <div class="video__row">
+      <div class="video__col-1">
+        <h2 class="video__heading">Just default Section</h2>
+
+        <p class="video__text">Bear claw marzipan bear claw applicake I love muffin. Lemon drops gummi bears pastry
+          gummi bears sesame snaps I love unerdwear.com. Soufflé cotton candy dessert candy ice cream wafer gummies
+          cheesecake brownie.</p>
+
+        <p class="video__text">Muffin chupa chups jelly beans sweet pie applicake. Croissant chocolate cake I love
+          pudding. Ice cream I love powder pudding apple pie marshmallow. Cupcake marzipan oat cake bonbon I love candy
+          canes toffee.</p>
+
+        <a href="#" class="video__btn">Visit me</a>
+      </div>
+      <div class="video__col-2">
+        <div class="video__content">
+          <iframe class="video__src" src="https://player.vimeo.com/video/30967083" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="twitter">
+  <div class="twitter__wrapper">
+    <div class="twitter__row">
+      <div class="twitter__col-1">
+        <h2 class="twitter__heading">Twitter</h2>
+        <p class="twitter__testimonial">Unerdwear cookie liquorice. Cake donut cupcake lollipop soufflé candy. Chocolate oat cake <b>@cheesecake</b> tootsie roll.</p>
+      </div>
+      <div class="twitter__col-2">
+        <span class="icon icon--twitter"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about__container">
+    <h2 class="about__heading">Who is Jhon Doe?</h2>
+    <div class="about__row">
+      <div class="about__col-1">
+        <p class="about__text">Bear claw marzipan bear claw applicake I love muffin. Lemon drops gummi bears
+          pastry gummi bears sesame snaps I love unerdwear.com. Soufflé cotton candy dessert candy ice cream wafer
+          gummies cheesecake brownie.
+        </p>
+        <p class="about__text">Muffin chupa chups jelly beans sweet pie applicake. Croissant chocolate cake
+          I love pudding. Ice cream I love powder pudding apple pie marshmallow. Cupcake marzipan oat cake bonbon
+          I love candy canes toffee.
+        </p>
+      </div>
+      <div class="about__col-1">
+        <p class="about__text">Pudding dessert jujubes tiramisu gingerbread croissant tiramisu applicake.
+          Sesame snaps sugar plum cotton candy chocolate bonbon lemon drops candy canes cotton candy. Cake
+          toffee pie bear claw pastry.
+        </p>
+        <ul class="about__icons">
+           <li class="about__icon"><a href="#" class="about__link icon icon--twitter"></a></li>
+           <li class="about__icon"><a href="#" class="about__link icon icon--google-plus"></a></li>
+           <li class="about__icon"><a href="#" class="about__link icon icon--dribbble"></a></li>
+           <li class="about__icon"><a href="#" class="about__link icon icon--coffee"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="testimonials">
+  <div class="testimonials__wrapper">
+    <div class="testimonials__row">
+      <div class="testimonials__col-1">
+        <h2 class="testimonials__heading">Testimonials</h2>
+        <blockquote class="testimonials__text">
+          Applicake chocolate cake wafer toffee pie soufflé wafer. Tart marshmallow wafer macaroon cheesecake jelly.
+          Gingerbread cookie soufflé sweet roll sweet roll jelly-o.
+        </blockquote>
+        <cite class="testimonials__author">-Walter White</cite>
+      </div>
+      <div class="testimonials__col-2">
+        <div class="testimonials__icon">
+          <span class="icon icon--quote-right"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="contact__wrapper">
+    <h2 class="contact__heading">Contact</h2>
+
+    <form  action="">
+      <div class="contact__row">
+        <div class="contact__col-1">
+          <p class="contact__info">
+            Jujubes bear claw croissant wafer sweet lemon drops brownie chocolate bar. Sweet lollipop halvah
+            tootsie roll cake fruitcake. Chocolate cake chocolate bar gingerbread lollipop tart. Jujubes bear claw
+            donut chupa chups.
+          </p>
+          <p class="contact__info">
+            Linda Newman <br>
+            W325 State Road 123 <br>
+            Mondovi, WI(Wisconsin) 98746-54321 <br>
+            (715) 946 - 1234 <br>
+          </p>
+        </div>
+        <div class="contact__col-2">
+          <label class="contact__label">
+            Full name
+            <input type="text" class="contact__name">
+          </label>
+          <label class="contact__label">
+            Email
+            <input type="email" class="contact__email">
+          </label>
+        </div>
+      </div>
+      <label class="contact__label">
+        Message
+        <textarea class="contact__message" rows="10"></textarea>
+      </label>
+      <div class="contact__row">
+        <div class="contact__col-3">
+          <input type="button" class="contact__btn" value="Message">
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer__wrapper">
+    <ul class="footer__list">
+      <li class="footer__item"><a href="#" class="footer__link  footer__link--first">Home</a></li>
+      <li class="footer__item"><a href="#" class="footer__link">Services</a></li>
+      <li class="footer__item"><a href="#" class="footer__link">Portfolio</a></li>
+      <li class="footer__item"><a href="#" class="footer__link">Contact</a></li>
+    </ul>
+
+    <div class="footer__copyright">
+      2016 ©
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="js/script.min.js"></script>
+</body>
+</html>
